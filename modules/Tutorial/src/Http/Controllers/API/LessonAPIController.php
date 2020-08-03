@@ -61,11 +61,12 @@ class LessonAPIController extends Controller
      */
     public function index(Request $request)
     {
-        return 123;
         try {
             $input = $request->all();
 
-            $data = $this->service->index($input);
+            $data = Cache::remember('lesson' . implode('-', $input), 60, function () use ($input) {
+                return $this->service->index($input);
+            });
 
             return new LessonResourceCollection($data);
         } catch (\Exception $exception) {
@@ -91,7 +92,6 @@ class LessonAPIController extends Controller
      */
     public function store(LessonCreateRequest $request)
     {
-        logger(__FUNCTION__);
         try {
             $input = $request->all();
 
@@ -121,7 +121,9 @@ class LessonAPIController extends Controller
     public function show($id)
     {
         try {
-            $lesson = $this->service->show($id);
+            $lesson = Cache::remember('lesson' . $id, 60, function () use ($id) {
+                return $this->service->show($id);
+            });
 
             return response()->json(new LessonResource($lesson));
         } catch (\Exception $exception) {

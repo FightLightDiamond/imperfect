@@ -17,16 +17,5 @@ class Test extends Model implements Transformable
 
     public $table = 'tests';
     public $fillable = ['title', 'description', 'time', 'status', 'created_by', 'updated_by'];
-
-    public $fileUpload = ['image' => 1];
-    protected $pathUpload = ['image' => '/images/tests'];
-
-    protected $thumbImage = [
-        'image' => [
-            '/thumbs/' => [
-
-            ]
-        ]
-    ];
 }
 

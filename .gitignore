@@ -25,3 +25,4 @@ storage/
 .idea/
 laravel-echo-server.json
 laravel-echo-server.lock
+.idea

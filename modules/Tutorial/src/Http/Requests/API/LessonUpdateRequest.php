@@ -23,13 +23,11 @@ class LessonUpdateRequest extends FormRequest
      */
     public function rules()
     {
-        logger(request()->all());
-
         return [
             'title' => 'required',
             'intro' => 'required',
             'content' => 'required',
-            'feature_image' => 'required',
+            'feature_image' => '',
             'section_id' => '',
             'status' => '',
             'no' => '',

@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+const SORT_FILTER = 'sort';
+const MY_FILTER = 'my';
+const RANDOM_ORDER_FILTER = '{randomOrder}';
+const RELATIONSHIP_FILTER = '{relationship}';
+
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

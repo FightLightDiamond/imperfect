@@ -9,6 +9,7 @@
 namespace GoTest\Http\Services\Admin;
 
 use GoTest\Http\Repositories\QuestionRepository;
+use GoTest\Models\Question;
 
 class QuestionService
 {
@@ -34,6 +35,17 @@ class QuestionService
 
     public function store($input)
     {
+        switch ($input['type']) {
+            case Question::TRUE_FALSE_TYPE:
+                $input['replies'] = $input['true_false'];
+                break;
+            case Question::MULTI_CHOICE_TYPE:
+                $input['replies'] = json_encode($input['multi_choice'], true);
+                break;
+            case Question::MULTI_ANSWER_TYPE:
+                $input['replies'] = json_encode($input['multi_answer'], true);
+                break;
+        }
         return $this->repository->store($input);
     }
 

@@ -25,13 +25,10 @@ class QuestionCreateRequest extends FormRequest
     {
         return [
             'type' => 'required',
-'question' => 'required',
-'answer' => 'required',
-'status' => 'required',
-'time' => 'required',
-'level' => 'required',
-
-
+            'question' => 'required',
+            'status' => 'required',
+            'time' => 'required',
+            'level' => 'required',
         ];
     }
 

@@ -1,7 +1,7 @@
 <?php
 
 Route::namespace('GoTest\Http\Controllers\Admin')
-    ->middleware(['api', 'auth:admin'])
+    ->middleware(['api', 'auth:api'])
     ->prefix('api/v1/admin')
     ->group(function () {
         Route::resource('questions' , 'QuestionAdminController');

@@ -14,5 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $a = [1, 2, 3];
+    $b = [2, 3, 1];
+
+    sort($a);
+    sort($b);
+
+    dd($a === $b);
+//    return view('welcome');
 });
+
+
+

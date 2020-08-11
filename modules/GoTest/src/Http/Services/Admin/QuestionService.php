@@ -28,24 +28,16 @@ class QuestionService
         return $this->repository->myPaginate($input);
     }
 
-    public function create()
-    {
-        return [];
-    }
-
     public function store($input)
     {
-        switch ($input['type']) {
-            case Question::TRUE_FALSE_TYPE:
-                $input['replies'] = $input['true_false'];
-                break;
-            case Question::MULTI_CHOICE_TYPE:
-                $input['replies'] = json_encode($input['multi_choice'], true);
-                break;
-            case Question::MULTI_ANSWER_TYPE:
-                $input['replies'] = json_encode($input['multi_answer'], true);
-                break;
+        logger($input);
+
+        $input['replies'] = json_encode($input['replies']);
+
+        if((int) $input['type'] === Question::MULTI_ANSWER_TYPE) {
+            $input['answer'] = json_encode($input['answer']);
         }
+
         return $this->repository->store($input);
     }
 

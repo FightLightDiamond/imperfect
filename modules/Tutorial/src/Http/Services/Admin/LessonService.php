@@ -27,11 +27,6 @@ class LessonService
         return $this->repository->myPaginate($input);
     }
 
-    public function create()
-    {
-        return [];
-    }
-
     public function store($input)
     {
         return $this->repository->store($input);

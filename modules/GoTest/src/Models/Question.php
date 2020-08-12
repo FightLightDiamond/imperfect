@@ -27,6 +27,8 @@ class Question extends Model implements Transformable
         'created_by', 'updated_by'
     ];
 
+    protected $hidden = ['answer'];
+
     public $fileUpload = ['image' => 1];
     protected $pathUpload = ['image' => '/images/questions'];
 

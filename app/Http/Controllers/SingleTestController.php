@@ -33,8 +33,10 @@ class SingleTestController extends Controller
 
     protected function multiAnswerCheck($answerRequest, $answer)
     {
-        $answer = json_decode($answer, true);
         sort($answerRequest);
+
+        $answer = json_decode($answer, true);
+
         sort($answer);
 
         return $answer === $answerRequest;

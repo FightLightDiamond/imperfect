@@ -7,8 +7,9 @@
 
 namespace GoTest\Http\Resources\API;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use GoTest\Models\Question;
 use Illuminate\Http\Resources\Json\ResourceCollection;
+
 
 class QuestionResourceCollection extends ResourceCollection
 {
@@ -16,6 +17,9 @@ class QuestionResourceCollection extends ResourceCollection
     {
         $currentPage = $this->currentPage();
         $perPage = $this->perPage();
+
+
+        $items = $this->formatData(clone $this->collection);
 
         return [
             'status' => true,
@@ -25,10 +29,25 @@ class QuestionResourceCollection extends ResourceCollection
             'current_page' => $currentPage,
             "next_page_url" => $this->nextPageUrl(),
             "prev_page_url" => $this->previousPageUrl(),
-            "from" => $perPage * ($currentPage -1) + 1,
-            "to" => $perPage  * ($currentPage -1) + $this->count(),
+            "from" => $perPage * ($currentPage - 1) + 1,
+            "to" => $perPage * ($currentPage - 1) + $this->count(),
 
-            'data' => $this->collection,
+            'data' => $items,
         ];
+    }
+
+    public function formatData($items)
+    {
+        $data = [];
+
+        foreach ($items as $i => $item) {
+            $data[$i] = $item->getAttributes();
+
+            if($item->type !== Question::TRUE_FALSE_TYPE) {
+                $data[$i]['replies'] = json_decode($item->replies, true);
+            }
+        }
+
+        return $data;
     }
 }

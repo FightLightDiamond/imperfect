@@ -24,4 +24,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/single-test/{id}', 'SingleTestController@test');
+Route::post('/v1/single-test/{id}', 'SingleTestController@test');

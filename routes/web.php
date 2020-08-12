@@ -23,6 +23,3 @@ Route::get('/', function () {
     dd($a === $b);
 //    return view('welcome');
 });
-
-
-

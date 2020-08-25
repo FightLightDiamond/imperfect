@@ -18,7 +18,7 @@ Route::name('api.')
 
 Route::name('api.')
     ->namespace('ACL\Http\Controllers\Auth')
-    ->prefix('api')
+    ->prefix('api/v1')
     ->middleware(['api',
         'throttle'])
     ->group(function () {

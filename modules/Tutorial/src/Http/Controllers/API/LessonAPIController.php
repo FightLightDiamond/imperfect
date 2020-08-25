@@ -64,7 +64,7 @@ class LessonAPIController extends Controller
         try {
             $input = $request->all();
 
-            $data = Cache::remember('lesson' . implode('-', $input), 60, function () use ($input) {
+            $data = Cache::remember('lesson' . implode('-', $input), 0, function () use ($input) {
                 return $this->service->index($input);
             });
 

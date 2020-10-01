@@ -5,12 +5,12 @@ namespace App;
 use Cuongpm\Modularization\MultiInheritance\ModelsTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Passport\HasApiTokens;
+use SMartins\PassportMultiauth\HasMultiAuthApiTokens;
 
 class User extends Authenticatable
 {
     use Notifiable;
-    use HasApiTokens, Notifiable;
+    use HasMultiAuthApiTokens;
     use ModelsTrait;
 
     /**

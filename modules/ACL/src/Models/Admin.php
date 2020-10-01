@@ -7,13 +7,16 @@ use Cuongpm\Modularization\MultiInheritance\ModelsTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Prettus\Repository\Traits\TransformableTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use SMartins\PassportMultiauth\HasMultiAuthApiTokens;
 
 class Admin extends Authenticatable
 {
     use Notifiable;
+    use HasMultiAuthApiTokens;
     use TransformableTrait;
     use ModelsTrait;
     use SoftDeletes;
+    use Notifiable;
 
     public $table = 'admins';
     public $fillable = ['name', 'email', 'password', 'remember_token'];

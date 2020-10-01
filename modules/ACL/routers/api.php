@@ -9,8 +9,7 @@
 Route::name('api.')
     ->namespace('ACL\Http\Controllers\API')
     ->prefix('api/v1')
-    ->middleware(['api',
-        'throttle'])
+    ->middleware(['api', 'throttle'])
     ->group(function () {
         Route::resource('users', 'UserAPIController');
 //        Route::resource('contacts' , 'ContactAPIController');
@@ -19,10 +18,8 @@ Route::name('api.')
 Route::name('api.')
     ->namespace('ACL\Http\Controllers\Auth')
     ->prefix('api/v1')
-    ->middleware(['api',
-        'throttle'])
+    ->middleware(['api', 'throttle'])
     ->group(function () {
-
         Route::post('/login', 'API\LoginController@login')->name('login')->middleware('oauth.providers');
         Route::post('/register', 'API\RegisterController@register')->name('register');
         Route::post('/forgot-password', 'API\ForgotPasswordController@sendResetLinkEmail')->name('forgot-password');

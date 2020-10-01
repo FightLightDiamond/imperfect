@@ -26,7 +26,7 @@ docker-restart:
 	make docker-link-storage
 
 docker-connect:
-	docker exec -it web bash
+	docker exec -it api bash
 
 docker-redis:
 	docker exec -it swiss_redis_1 ash

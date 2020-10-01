@@ -24,6 +24,8 @@ use ACL\Http\Repositories\VerifyUserRepository;
 use ACL\Http\Repositories\VerifyUserRepositoryEloquent;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Passport\PassportServiceProvider;
+use SMartins\PassportMultiauth\Providers\MultiauthServiceProvider;
 
 class ACLServiceProvider extends ServiceProvider
 {
@@ -45,6 +47,9 @@ class ACLServiceProvider extends ServiceProvider
     }
 
     public function register() {
+        $this->app->register(MultiauthServiceProvider::class);
+        $this->app->register(PassportServiceProvider::class);
+
         $this->app->bind('AccessFa', AccessFun::class);
         $this->app->bind(ContactRepository::class, ContactRepositoryEloquent::class);
 

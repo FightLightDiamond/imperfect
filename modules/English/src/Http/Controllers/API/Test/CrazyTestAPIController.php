@@ -52,7 +52,7 @@ class CrazyTestAPIController
     public function reading($id)
     {
         $data = $this->service->reading($id);
-        return new MasterResource($data);
+        return response()->json(new MasterResource($data));
     }
 
     /**

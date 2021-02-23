@@ -12,22 +12,16 @@ Route::middleware(['api'])
     ->name('api.')
     ->group(function () {
         Route::get('/english', 'EnglishAPIController@index')->name('english.index');
-
         Route::resource('blogs' , 'BlogAPIController');
-
         Route::resource('crazies' , 'CrazyAPIController');
         Route::resource('crazy-listen-histories' , 'CrazyListenHistoryAPIController');
-
         Route::get('crazy-courses/{id}', 'CrazyCourseAPIController@show')->name('crazy-course.list');
         Route::get('crazy-courses', 'CrazyCourseAPIController@index')->name('crazy-courses.index');
-
         Route::resource('crazy-listen-histories' , 'CrazyListenHistoryAPIController');
         Route::resource('crazy-read-histories' , 'CrazyReadHistoryAPIController');
         Route::resource('crazy-write-histories' , 'CrazyWriteHistoryAPIController');
         Route::resource('crazy-speak-histories' , 'CrazySpeakHistoryAPIController');
-
         Route::get('crazy-histories' , 'HistoryAPIController@index');
-
         Route::group(['prefix' => 'test', 'namespace' => 'Test'], function () {
             Route::get('crazies', 'CrazyTestAPIController@index')->name('test.crazy.index');
             Route::get('crazy-listen/{id}', 'CrazyTestAPIController@listening')->name('test.crazy.listening');
@@ -50,6 +44,5 @@ Route::middleware(['api'])
             Route::get('similarities', 'SimilarityTestAPIController@index')->name('test.similarity.index');
             Route::post('similarities', 'SimilarityTestAPIController@done')->name('test.similarity.done');
         });
-
         Route::resource('reminds' , 'RemindAPIController');
     });

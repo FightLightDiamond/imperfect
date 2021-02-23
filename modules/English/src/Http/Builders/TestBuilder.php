@@ -95,7 +95,7 @@ class TestBuilder
     {
         return $this->crazy->details()
             ->orderBy(DB::raw('RAND()'))
-            ->select($field, 'id')->get();
+            ->selectRaw($field . ' as sentence, id')->get();
     }
 
     public function courseList()

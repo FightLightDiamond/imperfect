@@ -17,7 +17,7 @@ class ReadMathCrazyBuilder extends TestBuilder
 
         $ens = $this->getListRand('sentence');
         $vis = $this->getListRand('meaning');
-        return compact('ens', 'vis');
+        return compact('ens', 'vis', 'crazy');
     }
 
     public function done($id, $sentences, $meanings)
